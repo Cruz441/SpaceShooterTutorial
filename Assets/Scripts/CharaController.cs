@@ -13,11 +13,20 @@ public class CharaController : MonoBehaviour
     public float tilt;
     public Boundary boundary;
 
+    public GameObject shot;
+    public Transform shotspawn;
+
     private Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+    }
+
+    private void Update()
+    {
+        Instantiate(shot, shotspawn.position, shotspawn.rotation);
+        
     }
 
     void FixedUpdate()
