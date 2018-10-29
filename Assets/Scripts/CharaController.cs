@@ -15,6 +15,8 @@ public class CharaController : MonoBehaviour
 
     public GameObject shot;
     public Transform shotspawn;
+    public float fireRate;
+    private float nextFire;
 
     private Rigidbody rb;
 
@@ -25,8 +27,11 @@ public class CharaController : MonoBehaviour
 
     private void Update()
     {
-        Instantiate(shot, shotspawn.position, shotspawn.rotation);
-        
+        if(Input.GetButton("Fire1") && Time.time > nextFire)
+        {
+            nextFire = Time.time + fireRate;
+            Instantiate(shot, shotspawn.position, shotspawn.rotation);
+        }      
     }
 
     void FixedUpdate()
