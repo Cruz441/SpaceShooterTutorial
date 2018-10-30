@@ -35,7 +35,11 @@ public class CharaController : MonoBehaviour
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotspawn.position, shotspawn.rotation);
             audioSource.Play();
-        }      
+        }
+
+        if (Input.GetKey("escape"))
+            Application.Quit();
+
     }
 
     //movement code of player
