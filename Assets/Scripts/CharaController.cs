@@ -18,22 +18,27 @@ public class CharaController : MonoBehaviour
     public float fireRate;
     private float nextFire;
 
+    private AudioSource audioSource;
     private Rigidbody rb;
 
-    private void Start()
+    void Start()
     {
         rb = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
     }
 
-    private void Update()
+    //fire a shot
+    void Update()
     {
         if(Input.GetButton("Fire1") && Time.time > nextFire)
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotspawn.position, shotspawn.rotation);
+            audioSource.Play();
         }      
     }
 
+    //movement code of player
     void FixedUpdate()
     {
         float moveHorizontal = Input.GetAxis("Horizontal");
